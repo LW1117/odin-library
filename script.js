@@ -22,10 +22,17 @@ function displayBooksInLibrary() {
     const tdPages = document.createElement("td");
     const tdRead = document.createElement("td");
     const deleteButton = document.createElement("button");
+    const finishedButton = document.createElement("button");
 
     deleteButton.innerText = "Delete";
     deleteButton.addEventListener("click", () => {
       myLibrary.splice(myLibrary.indexOf(book), 1);
+      displayBooksInLibrary();
+    });
+
+    finishedButton.innerText = "Finished?";
+    finishedButton.addEventListener("click", () => {
+      book.read = !book.read;
       displayBooksInLibrary();
     });
 
@@ -38,6 +45,7 @@ function displayBooksInLibrary() {
     tr.appendChild(tdAuthor);
     tr.appendChild(tdPages);
     tr.appendChild(tdRead);
+    tr.appendChild(finishedButton);
     tr.appendChild(deleteButton);
 
     tbody.appendChild(tr);
