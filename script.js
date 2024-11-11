@@ -21,6 +21,13 @@ function displayBooksInLibrary() {
     const tdAuthor = document.createElement("td");
     const tdPages = document.createElement("td");
     const tdRead = document.createElement("td");
+    const deleteButton = document.createElement("button");
+
+    deleteButton.innerText = "Delete";
+    deleteButton.addEventListener("click", () => {
+      myLibrary.splice(myLibrary.indexOf(book), 1);
+      displayBooksInLibrary();
+    });
 
     tdTitle.innerText = book.title;
     tdAuthor.innerText = book.author;
@@ -31,16 +38,11 @@ function displayBooksInLibrary() {
     tr.appendChild(tdAuthor);
     tr.appendChild(tdPages);
     tr.appendChild(tdRead);
+    tr.appendChild(deleteButton);
 
     tbody.appendChild(tr);
   });
 }
-
-// const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-// addBookToLibrary(hobbit);
-// addBookToLibrary(hobbit);
-// addBookToLibrary(hobbit);
-// displayBooksInLibrary();
 
 const title = document.getElementById("title");
 const author = document.getElementById("author");
