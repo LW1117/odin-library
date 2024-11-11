@@ -12,7 +12,8 @@ function addBookToLibrary(bookToAdd) {
 }
 
 function displayBooksInLibrary() {
-  const table = document.getElementById("table");
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
 
   myLibrary.forEach((book) => {
     const tr = document.createElement("tr");
@@ -31,7 +32,7 @@ function displayBooksInLibrary() {
     tr.appendChild(tdPages);
     tr.appendChild(tdRead);
 
-    table.appendChild(tr);
+    tbody.appendChild(tr);
   });
 }
 
@@ -40,3 +41,15 @@ function displayBooksInLibrary() {
 // addBookToLibrary(hobbit);
 // addBookToLibrary(hobbit);
 // displayBooksInLibrary();
+
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+const read = document.getElementById("read");
+const submit = document.getElementById("submit");
+
+submit.addEventListener("click", () => {
+  const book = new Book(title.value, author.value, pages.value, read.checked);
+  addBookToLibrary(book);
+  displayBooksInLibrary();
+});
